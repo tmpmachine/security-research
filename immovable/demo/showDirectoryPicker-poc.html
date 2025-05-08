@@ -1,17 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showDirectoryPicker demo</title>
+</head>
+<body>
 
-<button onclick="openFolderAndListFiles()">Open Folder & List Files</button>
-<ul id="fileList"></ul>
+    <h4>showDirectoryPicker demo</h4>
 
-<script>
-async function openFolderAndListFiles() {
-    const folderHandle = await window.showDirectoryPicker();
-    const fileList = document.getElementById('fileList');
-    fileList.innerHTML = '';
+    <button onclick="openFolderAndListFiles()">Open Folder & List Files</button>
+    <ul id="fileList"></ul>
 
-    for await (const entry of folderHandle.values()) {
-        const li = document.createElement('li');
-        li.textContent = entry.name;
-        fileList.appendChild(li);
+    <script>
+    async function openFolderAndListFiles() {
+        const folderHandle = await window.showDirectoryPicker();
+        const fileList = document.getElementById('fileList');
+        fileList.innerHTML = '';
+
+        for await (const entry of folderHandle.values()) {
+            const li = document.createElement('li');
+            li.textContent = entry.name;
+            fileList.appendChild(li);
+        }
     }
-}
-</script>
+    </script>
+
+</body>
+</html>
